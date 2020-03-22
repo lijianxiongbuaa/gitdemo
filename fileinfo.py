@@ -78,3 +78,48 @@ void print_digits_array(void)
         printf("\n");
     }
 }
+int display(int n)
+{
+    clear_digits_array();
+    int nums[MAX_DIGITS];
+    int m=n;
+    
+    
+    int k;
+    for(k=0;k<MAX_DIGITS;k++)
+        nums[k]=-1;
+    int i=0;
+    while(n>0)
+    {
+        int r=n%10;
+        n/=10;
+        nums[i++]=r;
+        if(i>=MAX_DIGITS)
+        {
+            printf("TOO HUGE NUMBER!\n");
+            return -1;
+        }
+    }
+    int j=(999999999-m)%(10);
+    for(i=MAX_DIGITS-1;i>=0;i--)
+    {
+        if(nums[i]>=0)
+        {
+            process_digits_array(nums[i], j++);
+        }
+    }
+    print_digits_array();
+    return 1;
+}
+
+void countdown_display(int n)
+{
+    int i;
+    system(CLEAR);
+    for(i=n;i>0;i--)
+    {
+        display(i);
+		sleep(1);
+        system(CLEAR);
+    }
+}
