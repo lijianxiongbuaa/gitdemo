@@ -39,13 +39,18 @@ int main(void)
     countdown_display(n);
 }
 
-void clear_digits_array(void) 
+void countdown_display(int n)
 {
-   int i,j;
-   for(i=0;i<3;i++)
-    for(j=0;j<MAX_DIGITS*4;j++)
-        digits[i][j]=' ';
+    int i;
+    system(CLEAR);
+    for(i=n;i>0;i--)
+    {
+        display(i);
+        sleep(1);
+        system(CLEAR);
+    }
 }
+
 void process_digits_array(int digit, int position) 
 {
 	if(position>=MAX_DIGITS)
